@@ -1,0 +1,15 @@
+﻿Make this app default file handler for .map procedures
+Tabs to run multiple procedures at once
+Screen resolution independence
+Record and play keyboard input (read from a text file)
+Icons
+Settings screen with:
+	Change Hotkeys
+	Custom Global Delay
+
+
+Documentation:
+Modifier keys codes: Alt = 1, Ctrl = 2, Shift = 4, Win = 8 for "RegisterHotKey()"
+Compute the addition of each combination of the keys you want to be pressed
+	ALT+CTRL = 1 + 2 = 3
+	CTRL+SHIFT = 2 + 4 = 6
