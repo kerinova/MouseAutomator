@@ -1,2 +1,6 @@
 ﻿v1.0.0.0 6/19/17 11:14 PM
 	Initial Release
+v1.0.1.15 6/21/17 10:28 PM
+	Fixed a bug where after stopping the playback the first time, the app would not playback upon attempting to playback again. 
+		(The thread was not stopped and the looping variable was indefinitley set to false after stopping)
+	Added a global delay setting

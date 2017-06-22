@@ -29,8 +29,9 @@ namespace MouseAutomator
 
         private List<Point> positions = new List<Point>(); //list of mouse positions to click
         private bool isLooping = true; //if playback is ongoing
-        private int globalDelay = 1000; //global delay between every action, can be customized by user
+        private int globalDelay = 250; //global delay between every action, can be customized by user
         private string fileName = ""; //name of current working file
+        private Thread loopThread;
 
         public Form1()
         {
@@ -57,6 +58,7 @@ Stop play loop: Shift + Z
             else if (m.Msg == 0x0312 && m.WParam.ToInt32() == HOTKEY_STOP_ID) //Key to stop looping
             {
                 isLooping = false;
+                loopThread.Abort();
             }
             base.WndProc(ref m);
         }
@@ -92,7 +94,8 @@ Stop play loop: Shift + Z
         /// <param name="e"></param>
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            Thread loopThread = new Thread(MouseOperationLoop);
+            isLooping = true;
+            loopThread = new Thread(MouseOperationLoop);
             loopThread.Start();
         }
 
@@ -129,6 +132,7 @@ Stop play loop: Shift + Z
         {
             using (StreamWriter writer = new StreamWriter(fileName))
             {
+                await writer.WriteLineAsync(globalDelay.ToString()); //writes the global delay for this program
                 foreach (Point point in positions)
                 {
                     await writer.WriteLineAsync(point.X + "," + point.Y + "," + point.Delay);
@@ -142,6 +146,7 @@ Stop play loop: Shift + Z
         {
             using (StreamReader reader = new StreamReader(ofd.OpenFile()))
             {
+                globalDelay = int.Parse(await reader.ReadLineAsync());
                 string line;
                 while ((line = await reader.ReadLineAsync()) != null)
                 {
@@ -223,7 +228,23 @@ Stop play loop: Shift + Z
             txtPositions.Text = "";
             positions = new List<Point>();
             base.Text = "Kerinova Mouse Animator";
+            globalDelay = 0;
         }
         #endregion
+
+        /// <summary>
+        /// Opens the settings menu for the global delay settinng and updates with the returned global delay time.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void globalDelayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GlobalDelaySettings globalDelaySettings = new GlobalDelaySettings(globalDelay);
+            DialogResult dr = globalDelaySettings.ShowDialog(this);
+            if(dr == DialogResult.OK)
+            {
+                globalDelay = globalDelaySettings.GlobalDelay;
+            }
+        }
     }
 }

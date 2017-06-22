@@ -53,6 +53,7 @@
             this.txtPositions.Location = new System.Drawing.Point(55, 43);
             this.txtPositions.Multiline = true;
             this.txtPositions.Name = "txtPositions";
+            this.txtPositions.ReadOnly = true;
             this.txtPositions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtPositions.Size = new System.Drawing.Size(327, 821);
             this.txtPositions.TabIndex = 0;
@@ -93,28 +94,28 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
@@ -130,14 +131,15 @@
             // changeToolStripMenuItem
             // 
             this.changeToolStripMenuItem.Name = "changeToolStripMenuItem";
-            this.changeToolStripMenuItem.Size = new System.Drawing.Size(249, 38);
+            this.changeToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
             this.changeToolStripMenuItem.Text = "Hotkeys";
             // 
             // globalDelayToolStripMenuItem
             // 
             this.globalDelayToolStripMenuItem.Name = "globalDelayToolStripMenuItem";
-            this.globalDelayToolStripMenuItem.Size = new System.Drawing.Size(249, 38);
+            this.globalDelayToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
             this.globalDelayToolStripMenuItem.Text = "Global Delay";
+            this.globalDelayToolStripMenuItem.Click += new System.EventHandler(this.globalDelayToolStripMenuItem_Click);
             // 
             // txtInstructions
             // 
